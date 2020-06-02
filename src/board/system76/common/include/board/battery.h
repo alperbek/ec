@@ -1,6 +1,7 @@
 #ifndef _BOARD_BATTERY_H
 #define _BOARD_BATTERY_H
 
+#include <stdbool.h>
 #include <stdint.h>
 
 extern uint16_t battery_temp;
@@ -13,9 +14,15 @@ extern uint16_t battery_status;
 extern uint16_t battery_design_capacity;
 extern uint16_t battery_design_voltage;
 
+void battery_init(void);
 int battery_charger_disable(void);
 int battery_charger_enable(void);
 void battery_event(void);
 void battery_debug(void);
+
+/**
+ * Configure the charger based on charging threshold values.
+ */
+int battery_charger_configure(void);
 
 #endif // _BOARD_BATTERY_H
